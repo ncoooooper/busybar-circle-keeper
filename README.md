@@ -4,6 +4,8 @@ Track speaking turns and find the people who have not yet spoken in a discussion
 
 A facilitator can see who has not had a turn without keeping tally marks in meeting notes. The counter follows contributions; it can suggest the next person even when several people have the same count.
 
+Each person has a column in roster order. Its height compares their turn count with the most active speaker. A single dim pixel means they have not spoken yet. The dot below the row marks the selected person.
+
 ## Count contributions
 
 1. Enter up to ten participant names separated by commas. Turn to the person speaking and click once for each contribution you want to count.
