@@ -2,7 +2,7 @@
   "name": "busybar-circle-keeper",
   "private": true,
   "version": "0.1.0",
-  "description": "Circle Keeper",
+  "description": "Track speaking turns and find the people who have not yet spoken in a discussion.",
   "author": "ncoooooper",
   "type": "module",
   "scripts": {

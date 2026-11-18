@@ -4,6 +4,6 @@
   "name": "Circle Keeper",
   "version": "0.1.0",
   "api_version": "27.12.0",
-  "description": "Circle Keeper",
+  "description": "Track speaking turns and find the people who have not yet spoken in a discussion.",
   "author": "ncoooooper"
 }

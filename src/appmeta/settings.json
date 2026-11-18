@@ -1,0 +1,12 @@
+{
+  "format_version": 1,
+  "version": 1,
+  "fields": {
+    "people": {
+      "type": "string",
+      "label": "Participants",
+      "default": "Ada,Bo,Cam,Dee",
+      "max_length": 110
+    }
+  }
+}

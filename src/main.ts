@@ -1,66 +1,11 @@
-import { device } from "@shared/device";
-import { column, render, type Node } from "@busy-app/busy-lib";
-import manifest from "./appmeta/manifest.json";
-
-/** The name the app draws under; the device clears elements by this id. */
-const APP = manifest.id;
-
-/** How often the screen is redrawn. */
-const TICK_MS = 1000;
-
-const WHITE = "#FFFFFFFF";
-const SUBTLE_WHITE = "#FFFFFF80";
-
-/**
- * The frame drawn on every tick. The screen is 72×16, so two short lines are about all that fits.
- */
-function frame(ticks: number): Node {
-  return column({ justify: "center", align: "center" }, [
-    { type: "text", id: "title", text: "Hello", font: "bold", color: WHITE },
-    {
-      type: "text",
-      id: "ticks",
-      text: String(ticks),
-      font: "small",
-      color: SUBTLE_WHITE,
-    },
-  ]);
-}
-
-/** Sends one frame to the device. */
-async function draw(ticks: number): Promise<void> {
-  const elements = render(frame(ticks));
-  await device.DisplayDraw({ application_name: APP, priority: 50, elements });
-}
-
-/**
- * Entry point, called at the end of the file: the device runs this script from top to bottom and starts nothing by itself.
- */
-function main(): void {
-  let ticks = 0;
-  let stopped = false;
-
-  const report = (err: unknown) =>
-    console.error(`${APP}: ${err instanceof Error ? err.message : String(err)}`);
-
-  void draw(ticks).catch(report);
-
-  // Tick errors are reported, not thrown: one failed request must not stop the loop.
-  const timer = setInterval(() => {
-    ticks += 1;
-    void draw(ticks).catch(report);
-  }, TICK_MS);
-
-  // Back leaves the app. Once the timer is cleared and the handler detached, nothing keeps it alive and the device takes the screen back.
-  const unbind = listen("input", (event) => {
-    if (stopped || event.key !== "back" || event.action !== "short") return;
-
-    stopped = true;
-    clearInterval(timer);
-
-    // Not detached from inside the handler itself: with nothing else left the unbind stops the app on the spot, while this handler is still running.
-    setTimeout(unbind, 0);
-  });
-}
-
-main();
+import {desk} from "@shared/desk";
+import {wrap} from "@shared/surface";
+let people=["Ada","Bo","Cam","Dee"];type S={at:number;counts:Record<string,number>;history:string[]};
+desk<S>({name:"Circle Keeper",accent:"#ED8B86",motion:{"motif":"interval","color":"#ED8B86","shine":"#FFF0DB"},initial:()=>({at:0,counts:{},history:[]}),configure:(s,v)=>{const p=String(v.people||"").split(",").map(x=>x.trim()).filter(Boolean).slice(0,10);if(p.length)people=p;s.at%=people.length;},
+ render:s=>{const p=people[s.at],unheard=people.filter(x=>!s.counts[x]);return {title:p,value:(s.counts[p]||0)+" turns",lines:[p+" / "+(s.counts[p]||0),"Unheard: "+unheard.length,
+ unheard.slice(0,2).join(", ")||"Everyone contributed","Wheel: speaker / Click: turn","Start: least heard","Hold OK: undo / hold Start: new"]};},
+ action:(s,k)=>{const p=people[s.at];if(k==="up"||k==="down")s.at=wrap(s.at+(k==="up"?1:-1),people.length);
+ if(k==="ok"){s.counts[p]=(s.counts[p]||0)+1;s.history=s.history.concat([p]).slice(-100);}
+ if(k==="start"){let best=wrap(s.at+1,people.length);for(let j=1;j<=people.length;j++){const i=wrap(s.at+j,people.length);if((s.counts[people[i]]||0)<(s.counts[people[best]]||0))best=i;}s.at=best;}
+ if(k==="hold-ok"&&s.history.length){const last=s.history.pop()!;s.counts[last]=Math.max(0,(s.counts[last]||0)-1);}
+ if(k==="hold-start"){s.counts={};s.history=[];}}});
