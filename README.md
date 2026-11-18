@@ -6,6 +6,20 @@ A facilitator can see who has not had a turn without keeping tally marks in meet
 
 Each person has a column in roster order. Its height compares their turn count with the most active speaker. A single dim pixel means they have not spoken yet. The dot below the row marks the selected person.
 
+## Screen transitions
+
+Count a contribution and move the selection to the person you want to invite next.
+
+![Circle Keeper front display. Count a contribution and move the selection to the person you want to invite next.](media/guide/screen-transitions.gif)
+
+<details>
+
+<summary>Watch the rear display</summary>
+
+![Circle Keeper rear display during the recorded controls](media/guide/screen-transitions-rear.gif)
+
+</details>
+
 ## Count contributions
 
 1. Enter up to ten participant names separated by commas. Turn to the person speaking and click once for each contribution you want to count.
@@ -36,6 +50,6 @@ Open BUSY Bar Emulator. From this repository, run:
 
 Press **Back** to exit.
 
-The GIFs are excerpts from the emulator recording. Each front-display pixel is shown at 9× its original width and height. The end frames pause for reading.
+The GIFs are excerpts from the emulator recording. Each LED occupies a 16 × 16 cell with a black border. The end frames pause for reading.
 
 [Full recording](media/controls.mp4) · [Rear display](screenshots/back-1.png) · [Firmware test](EMULATOR-QA.md) · [MIT license](LICENSE)

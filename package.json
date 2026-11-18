@@ -1,7 +1,7 @@
 {
   "name": "busybar-circle-keeper",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Track speaking turns and find the people who have not yet spoken in a discussion.",
   "author": "ncoooooper",
   "type": "module",

@@ -2,5 +2,5 @@
   "category": "social",
   "short_description": "Track speaking turns and find the people who have not yet spoken in a discussion.",
   "description": "Track speaking turns and find the people who have not yet spoken in a discussion. Set participants as a comma-separated list. Turn to a speaker and click once per contribution. Start jumps to the least-heard participant, prioritizing anyone with zero turns. Hold the wheel undoes the last contribution and hold Start begins a new discussion.",
-  "changelog": "First public version."
+  "changelog": "New screen transitions and high-contrast LED previews."
 }

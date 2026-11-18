@@ -1,0 +1,59 @@
+{
+  "app": "busybar-circle-keeper",
+  "sha256": "6f6777140bffd1b8d3dee4e3393ac650ebb2586e284925bc8120a5d72df880a3",
+  "rapid_input_test": {
+    "app": "io.ncoooooper.circlekeeper",
+    "sha256": "6f6777140bffd1b8d3dee4e3393ac650ebb2586e284925bc8120a5d72df880a3",
+    "firmware": {
+      "name": "1.3.1",
+      "commit": "8edd2da4"
+    },
+    "heap_peak_kib": 96.1,
+    "budget_kib": 128.0,
+    "exit": "finished"
+  },
+  "firmware": "1.3.1",
+  "cell": 16,
+  "lit": 14,
+  "front": [
+    72,
+    16
+  ],
+  "rear": [
+    160,
+    80
+  ],
+  "captures": [
+    {
+      "mode": "classic",
+      "guides": [
+        "count-ada-turns",
+        "invite-next-speaker"
+      ],
+      "tour": "screen-transitions",
+      "input": [
+        [
+          "ok",
+          "ok"
+        ],
+        [
+          "start",
+          "ok"
+        ],
+        [
+          "down",
+          "up",
+          "ok"
+        ]
+      ],
+      "distinct_frames": [
+        12,
+        12,
+        40
+      ],
+      "rear_frames": 8,
+      "rear_tour": "screen-transitions-rear",
+      "exit": "finished"
+    }
+  ]
+}
